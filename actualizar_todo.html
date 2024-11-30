@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar</title>
+    <link rel="stylesheet" type="text/css" href="actualizar_todo.css">
+    <script src="script.js" defer></script>
+    <script>
+        // Interceptar la acción del botón "Atrás"
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+        };
+    </script>
+</head>
+<body>
+
+    
+    <div class="bubbles"></div> <!-- Contenedor de burbujas -->
+    
+    <div class="container">
+        <div class="botones">
+            <button onclick="mostrarFormulario('formulario-clientes')">Clientes</button>
+            <button onclick="mostrarFormulario('formulario-empleados')">Empleados</button>
+            <button onclick="mostrarFormulario('formulario-servicios')">Servicios</button>
+        </div><br>
+        <img src="ACOAPEN.jpg" alt="Imagen Superior" class="imagen-superior-derecha">
+        <div class="formulario" id="formulario-clientes" style="display:none;">
+            <center><h3>ACTUALIZAR CLIENTES</h3></center>
+            <?php if (isset($_SESSION['mensaje_cliente'])): ?>
+                <div id="mensaje_cliente"><?php echo $_SESSION['mensaje_cliente']; unset($_SESSION['mensaje_cliente']); ?></div>
+            <?php endif; ?>
+            <form action="actualizar_todo.php" method="POST">
+                <div class="field-group">
+                    <label for="numero_cliente">Número Cliente:</label>
+                    <input type="text" id="numero_cliente" name="numero_cliente" pattern="[A-Za-z0-9]{5}" maxlength="5" required>
+                </div>
+                <div class="field-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="field-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+                <div class="field-group">
+                    <label for="correo">Correo:</label>
+                    <input type="text" id="correo" name="correo" required>
+                </div>
+                <div class="field-group">
+                    <label for="dui">DUI:</label>
+                    <input type="text" id="dui" name="dui" pattern="\d{8}-\d{1}" maxlength="10" required>
+                </div>
+                <div class="field-group">
+                    <label for="id_zona">ID Zona:</label>
+                    <input type="text" id="id_zona" name="id_zona" required>
+                </div>
+                <div class="field-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" name="telefono" pattern="\d{4}-\d{4}" maxlength="9" required>
+                </div>
+                <input  id="btn-actualizar" class="btn-actualizar" type="submit" value="Actualizar Cliente">
+            </form>
+            
+           
+        </div>
+        
+        <div class="formulario" id="formulario-empleados" style="display:none;">
+            <center><h3>ACTUALIZAR EMPLEADOS</h3></center>
+            <?php if (isset($_SESSION['mensaje_empleado'])): ?>
+                <div id="mensaje_empleado"><?php echo $_SESSION['mensaje_empleado']; unset($_SESSION['mensaje_empleado']); ?></div>
+            <?php endif; ?>
+            <form action="actualizar_todo.php" method="POST">
+                <div class="field-group">
+                    <label for="numero_empleado">Número Empleado:</label>
+                    <input type="text" id="numero_empleado" name="numero_empleado" pattern="[A-Za-z0-9]{5}" maxlength="5" required>
+                </div>
+                <div class="field-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="field-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+                <div class="field-group">
+                    <label for="tipo">Tipo:</label>
+                    <input type="text" id="tipo" name="tipo" required>
+                </div>
+                <input id="btn-actualizar" class="btn-actualizar" type="submit" value="Actualizar Empleado">
+            </form>
+        </div>
+        
+        <div class="formulario" id="formulario-servicios" style="display:none;">
+            <center><h3>ACTUALIZAR SERVICIOS</h3></center>
+            <?php if (isset($_SESSION['mensaje_servicio'])): ?>
+                <div id="mensaje_servicio"><?php echo $_SESSION['mensaje_servicio']; unset($_SESSION['mensaje_servicio']); ?></div>
+            <?php endif; ?>
+            <form action="actualizar_todo.php" method="POST">
+                <div class="field-group">
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" name="codigo" pattern="[A-Za-z0-9]{5}" maxlength="5" required>
+                </div>
+                <div class="field-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="field-group">
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+                </div>
+                <input id="btn-actualizar" class="btn-actualizar" type="submit" value="Actualizar Servicio">
+            </form>
+        </div>
+    </div>
+    
+    <a href="menu_admin.html" class="icono-salida">
+        <img src="regresar.png" alt="Salir">
+    </a>
+
+    <script>
+        function mostrarFormulario(formularioId) {
+            var formularios = document.querySelectorAll('.formulario');
+            formularios.forEach(function(formulario) {
+                formulario.style.display = 'none';
+            });
+            document.getElementById(formularioId).style.display = 'block';
+        }
+
+        // Función para crear burbujas
+        function createBubble() {
+            const bubble = document.createElement('div'); // Crear un nuevo elemento div
+            bubble.classList.add('bubble'); // Agregar la clase de burbuja
+
+            // Definir tamaño aleatorio de la burbuja entre 20px y 60px
+            const size = Math.random() * 40 + 20; // Menos tamaño máximo
+            bubble.style.width = `${size}px`; // Asignar ancho
+            bubble.style.height = `${size}px`; // Asignar altura
+
+            // Posición horizontal aleatoria
+            bubble.style.left = `${Math.random() * 100}vw`; // 100% del ancho de la vista
+
+            // Agregar burbuja al contenedor de burbujas
+            document.querySelector('.bubbles').appendChild(bubble);
+
+            // Eliminar burbuja después de que termine la animación
+            bubble.addEventListener('animationend', () => {
+                bubble.remove();
+            });
+        }
+
+        // Generar burbujas cada 4000ms (más despacio)
+        setInterval(createBubble, 4000);
+    </script>
+</body>
+</html>
