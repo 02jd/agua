@@ -1,0 +1,132 @@
+/* Reseteo de estilos y configuración básica para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura que el padding y borde no se sumen al tamaño total del elemento */
+    font-family: Arial, sans-serif; /* Establece Arial como fuente por defecto */
+}
+
+/* Estilos del cuerpo del documento */
+body {
+    background-color: #f4f4f4; /* Fondo de la página */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    height: 68vh; /* Ocupa toda la altura de la ventana */
+    flex-direction: column; /* Coloca los elementos en columna */
+}
+
+/* Estilo del menú de navegación */
+nav {
+    background-color: #333; /* Fondo oscuro para la barra de navegación */
+    width: 100%; /* Ocupa el ancho completo de la página */
+    padding: 10px 0; /* Espaciado arriba y abajo */
+}
+
+/* Estilos de la lista de navegación */
+nav ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    display: flex; /* Usa flexbox para alinear los elementos del menú */
+    justify-content: space-between; /* Distribuye los elementos uniformemente */
+    align-items: center; /* Alinea verticalmente los elementos */
+    padding: 0 20px; /* Espaciado interno en los laterales */
+}
+
+/* Estilo de los elementos de la lista del menú */
+nav ul li {
+    position: relative; /* Necesario para posicionar el dropdown */
+}
+
+/* Estilo de los enlaces dentro del menú */
+nav ul li a {
+    color: #fff; /* Texto blanco */
+    text-decoration: none; /* Elimina el subrayado */
+    padding: 10px 20px; /* Espaciado interno para agrandar el área clicable */
+    display: block; /* Hace que el enlace ocupe todo el espacio del elemento */
+}
+
+/* Estilo del menú desplegable (dropdown) */
+nav ul li ul.dropdown {
+    display: none; /* Oculta el menú desplegable por defecto */
+    position: absolute; /* Posiciona el menú debajo del elemento padre */
+    top: 100%; /* Coloca el dropdown justo debajo del enlace */
+    left: 0; /* Alinea el dropdown a la izquierda del padre */
+    background-color: #333; /* Fondo oscuro para el dropdown */
+    list-style: none; /* Sin puntos de lista */
+    padding: 0; /* Sin padding */
+    min-width: 150px; /* Ancho mínimo del dropdown */
+}
+
+/* Muestra el dropdown cuando se hace hover sobre el elemento padre */
+nav ul li:hover ul.dropdown {
+    display: block; /* Muestra el menú desplegable */
+}
+
+/* Estilo de los enlaces dentro del menú desplegable */
+nav ul li ul.dropdown li a {
+    padding: 10px 20px; /* Espaciado interno */
+}
+
+/* Estilo del icono de login en la barra de navegación */
+.login-icon a {
+    display: flex; /* Usa flexbox para alinear el icono y el texto */
+    align-items: center; /* Alinea verticalmente el icono y el texto */
+}
+
+/* Margen entre el icono y el texto en el login */
+.login-icon i {
+    margin-right: 8px; /* Espacio entre el icono y el texto */
+}
+
+/* Contenedor para las secciones de Misión y Visión */
+.container {
+    width: 80%; /* Ocupa el 80% del ancho de la página */
+    display: flex; /* Usa flexbox para alinear las secciones */
+    justify-content: space-between; /* Separa las secciones de Misión y Visión */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+/* Estilo de las secciones de Misión y Visión */
+#Mision, #Vision {
+    width: 40%; /* Cada sección ocupa el 40% del contenedor */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo semitransparente */
+    backdrop-filter: blur(10px); /* Aplica un desenfoque al fondo */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde semitransparente */
+}
+
+/* Estilo de los títulos (h2) en las secciones */
+h2 {
+    font-size: 24px; /* Tamaño de fuente más grande para los títulos */
+    color: #333; /* Color de texto oscuro */
+}
+
+/* Estilo de los párrafos en las secciones */
+p {
+    font-size: 18px; /* Tamaño de fuente de los párrafos */
+    color: #555; /* Color de texto gris */
+    line-height: 1.6; /* Espaciado entre líneas */
+}
+
+/* Estilos para dispositivos móviles (pantallas pequeñas) */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Coloca los elementos del menú en columna */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+    }
+
+    nav ul li {
+        margin-bottom: 10px; /* Espaciado entre los elementos del menú */
+    }
+
+    .container {
+        flex-direction: column; /* Coloca las secciones de Misión y Visión una debajo de la otra */
+        align-items: center; /* Alinea las secciones en el centro */
+    }
+
+    #Mision, #Vision {
+        width: 100%; /* Las secciones ocupan el 100% del contenedor */
+        margin-bottom: 20px; /* Espaciado inferior entre las secciones */
+    }
+}

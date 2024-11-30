@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUSCAR</title>
+    <link rel="stylesheet" type="text/css" href="buscar_todo.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <h2></h2>
+
+    <div class="bubbles"></div> <!-- Contenedor de burbujas -->
+    
+    <div class="container">
+        <div class="botones">
+            <button onclick="mostrarFormulario('formulario-clientes')">Clientes</button>
+            <button onclick="mostrarFormulario('formulario-empleados')">Empleados</button>
+            <button onclick="mostrarFormulario('formulario-servicios')">Servicios</button>
+        </div>
+        <br>
+        <img src="ACOAPEN.jpg" alt="Logo" class="imagen-superior-derecha"> <!-- Logo en la esquina superior derecha -->
+
+        <!-- Contenedor principal -->
+        <div class="container">
+
+            <!-- Formulario para buscar cliente -->
+            <div class="formulario" id="formulario-clientes" style="display: none;">
+                <center><h3>CLIENTES</h3></center><br>
+                <form action="pdf_clientes.php" method="post">
+                    <div class="field-group">
+                        <label for="numero_cliente">Número Cliente:</label>
+                        <input type="text" id="numero_cliente" name="numero_cliente" required>
+                    </div><br>
+                    <center><input id="btn-buscar" class="btn-buscar" type="submit" value="Buscar Cliente"></center>
+                </form>
+            </div>
+
+            <!-- Formulario para buscar empleado -->
+            <div class="formulario" id="formulario-empleados" style="display: none;">
+                <center><h3>EMPLEADOS</h3></center><br>
+                <form action="pdf_empleado.php" method="post">
+                    <div class="field-group">
+                        <label for="numero_empleado">Número Empleado:</label>
+                        <input type="text" id="numero_empleado" name="numero_empleado" required>
+                    </div><br>
+                    <center><input  id="btn-buscar" class="btn-buscar" type="submit" value="Buscar Empleado"></center>
+                </form>
+            </div>
+
+            <!-- Formulario para buscar servicio -->
+            <div class="formulario" id="formulario-servicios" style="display: none;">
+                <center><h3>SERVICIOS</h3></center><br>
+                <form action="pdf_servicios.php" method="post">
+                    <div class="field-group">
+                        <label for="codigo">Código:</label>
+                        <input type="text" id="codigo" name="codigo" required>
+                    </div><br>
+                    <center><input id="btn-buscar" class="btn-buscar" type="submit" value="Buscar Servicio"></center>
+                </form>
+            </div>
+
+        </div>
+
+        <a href="menu_admin.html" class="icono-salida">
+            <img src="regresar.png" alt="Salir" width="50" height="50"> <!-- Icono de salida -->
+        </a>
+
+        <script>
+            function mostrarFormulario(formularioId) {
+                // Ocultar todos los formularios
+                var formularios = document.querySelectorAll('.formulario');
+                formularios.forEach(function(formulario) {
+                    formulario.style.display = 'none';
+                });
+                // Mostrar el formulario seleccionado
+                document.getElementById(formularioId).style.display = 'block';
+            }
+
+            // Función para crear burbujas
+            function createBubble() {
+                const bubble = document.createElement('div'); // Crear un nuevo elemento div
+                bubble.classList.add('bubble'); // Agregar la clase de burbuja
+
+                // Definir tamaño aleatorio de la burbuja entre 20px y 60px
+                const size = Math.random() * 40 + 20; // Menos tamaño máximo
+                bubble.style.width = `${size}px`; // Asignar ancho
+                bubble.style.height = `${size}px`; // Asignar altura
+
+                // Posición horizontal aleatoria
+                bubble.style.left = `${Math.random() * 100}vw`; // 100% del ancho de la vista
+
+                // Agregar burbuja al contenedor de burbujas
+                document.querySelector('.bubbles').appendChild(bubble);
+
+                // Eliminar burbuja después de que termine la animación
+                bubble.addEventListener('animationend', () => {
+                    bubble.remove();
+                });
+            }
+
+            // Generar burbujas cada 4000ms (más despacio)
+            setInterval(createBubble, 4000);
+        </script>
+    </body>
+</html>

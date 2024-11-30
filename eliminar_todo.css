@@ -1,0 +1,174 @@
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente de la página */
+    background: radial-gradient(circle, #a8d1fd, #ddddde); /* Fondo con gradiente radial */
+    margin: 0; /* Margen del cuerpo */
+    padding: 30px; /* Espaciado interno del cuerpo */
+    display: flex; /* Usar flexbox para el diseño */
+    flex-direction: column; /* Organizar elementos en columna */
+    align-items: center; /* Centrar elementos en el eje transversal */
+}
+
+/* Imagen en la esquina superior derecha */
+.imagen-superior-derecha {
+    position: absolute; /* Cambiado a posición absoluta */
+    top: 30px; /* A 30px desde la parte superior */
+    right: 40px; /* A 40px desde la derecha */
+    width: 120px; /* Ajusta el ancho de la imagen */
+    height: 120px; /* Ajusta la altura de la imagen */
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    border: 2px solid #000; /* Agrega un borde de 2px de color negro */
+}
+
+/* Ícono de salida en la esquina inferior derecha */
+.icono-salida {
+    position: absolute; /* Posiciona la imagen de absoluta */
+    bottom: 40px; /* Se ubica a 10px desde la parte inferior de la página */
+    right: 1265px; /* Se ubica a 10px desde la parte derecha de la página */
+    width: 40px; /* Ajusta el ancho del contenedor del ícono */
+    height: 40px; /* Ajusta la altura del contenedor del ícono */
+}
+
+.icono-salida img {
+    width: 100%; /* Asegura que la imagen del ícono ocupe el 100% del ancho del contenedor */
+    height: 100%; /* Asegura que la imagen del ícono ocupe el 100% de la altura del contenedor */
+}
+
+/* Estilos del contenedor principal */
+.container {
+    width: 100%; /* Ancho total del contenedor */
+    max-width: 600px; /* Ancho máximo del contenedor (reducido) */
+    display: flex; /* Usar flexbox para el diseño */
+    flex-direction: column; /* Organizar elementos en columna */
+    align-items: center; /* Centrar elementos en el eje transversal */
+}
+
+/* Estilos de la sección de botones */
+.botones {
+    display: flex; /* Usar flexbox para el diseño */
+    gap: 20px; /* Espacio entre botones */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Estilos de los botones */
+.botones button {
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #70b1f7; /* Color de fondo */
+    color: rgb(4, 2, 60); /* Color de texto */
+    border: none; /* Sin bordes */
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición de color de fondo */
+}
+
+/* Estilos al pasar el cursor sobre los botones */
+.botones button:hover {
+    background-color: #87aed7; /* Cambiar color de fondo al pasar sobre el botón */
+}
+
+/* Estilos del formulario */
+.formulario {
+    background-color: rgba(229, 229, 252, 0.5); /* Color de fondo en rgba */
+    padding: 20px; /* Espaciado interno del formulario */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    flex: 1; /* Hacer que cada formulario ocupe espacio igual */
+    min-width: 250px; /* Ancho mínimo para cada formulario */
+}
+
+/* Estilo para el contenedor de pares de campos */
+.field-group {
+    display: flex; /* Usar flexbox para organizar en fila */
+    justify-content: space-between; /* Espacio entre elementos */
+    margin-bottom: 15px; /* Espacio inferior entre grupos */
+}
+
+/* Estilo para etiquetas */
+label {
+    flex: 3; /* Hacer que las etiquetas ocupen espacio proporcional */
+    margin-right: 10px; /* Espacio a la derecha de la etiqueta */
+    font-weight: bold; /* Texto en negrita */
+    color: #060606; /* Color del texto de la etiqueta */
+}
+
+/* Estilo para los campos de entrada */
+input[type="text"] {
+    flex: 2; /* Hacer que los inputs ocupen más espacio */
+    padding: 8px; /* Espaciado interno */
+    border: 2px solid #bcbcbc; /* Borde inicial */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f3f0f0; /* Color de fondo */
+    color: #333; /* Color del texto */
+    transition: background-color 0.3s, border-color 0.3s; /* Transiciones */
+}
+
+/* Estilos al enfocar los campos de entrada */
+input[type="text"]:focus {
+    outline: none; /* Sin borde de enfoque */
+    border-color: #b4b4b4; /* Color de borde al enfocar */
+}
+
+/* Estilos de los botones de envío */
+input[type="submit"] {
+    background-color: #9eb5ff; /* Color de fondo */
+    color: rgb(9, 9, 9); /* Color de texto */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición de color de fondo */
+    font-size: 12px; /* Tamaño del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin bordes */
+    border-radius: 7px; /* Bordes redondeados */
+}
+
+/* Estilos al pasar el cursor sobre los botones de envío */
+input[type="submit"]:hover {
+    background-color: #a7a7f1; /* Cambiar color de fondo */
+}
+
+/* Efecto al pasar el cursor sobre los formularios */
+.formulario:hover {
+    transform: translateY(-5px); /* Mover hacia arriba */
+    background-color: #c3d4fc; /* Cambiar color de fondo */
+}
+
+/* Estilos generales para las burbujas */
+.bubbles {
+    position: absolute; /* Posicionamiento absoluto para que floten sobre el contenido */
+    bottom: 0; /* Alineación en la parte inferior */
+    left: 0; /* Alinear a la izquierda */
+    width: 100%; /* Ancho total del contenedor de burbujas */
+    height: 100%; /* Altura total del contenedor de burbujas */
+    pointer-events: none; /* No interferir con la interacción del mouse */
+    z-index: -1; /* Asegurarse de que las burbujas estén detrás del contenido */
+}
+
+/* Estilo individual de las burbujas */
+.bubble {
+    position: absolute; /* Posicionamiento absoluto para cada burbuja */
+    bottom: -100px; /* Comienza fuera de la vista */
+    background: rgba(255, 255, 255, 0.5); /* Color de la burbuja con más transparencia */
+    border-radius: 50%; /* Forma redonda */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Sombra para dar un efecto de brillo */
+    animation: rise 10s infinite; /* Animación de subida más lenta */
+}
+
+/* Animación de las burbujas */
+@keyframes rise {
+    0% {
+        transform: translateY(0); /* Comienza en su posición original */
+        opacity: 1; /* Totalmente visible */
+    }
+    100% {
+        transform: translateY(-700px); /* Sube 700px */
+        opacity: 0; /* Se desvanece */
+    }
+}
+
+/* Estilos para dispositivos con ancho menor a 768px */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+        width: 90%; /* Ancho del 90% */
+        padding: 0; /* Sin espaciado interno */
+    }
+}

@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    height: 100vh; /* Altura completa de la ventana */
+    display: flex; /* Utiliza flexbox para alinear los elementos */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    background: radial-gradient(circle, #a8d1fd, #1e60a6, #033871, #010140);
+}
+
+.content {
+    display: flex; /* Dispone la imagen y el formulario en una fila */
+    width: 80%; /* Ancho del contenedor principal */
+    max-width: 800px; /* Ancho máximo del contenedor */
+    height: 400px; /* Altura fija para igualar el tamaño de la imagen y el formulario */
+}
+
+.image-container {
+    flex: 1; /* Ocupa el 50% del ancho */
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    align-items: center; /* Centra la imagen verticalmente */
+    height: 100%; /* Altura completa del contenedor */
+}
+
+/* Ícono de salida en la esquina inferior derecha */
+.icono-salida {
+    position: absolute; /* Posiciona la imagen de absoluta */
+    bottom: 35px; /* Se ubica a 10px desde la parte inferior de la página */
+    right: 1265px; /* Se ubica a 10px desde la parte derecha de la página */
+    width: 40px; /* Ajusta el ancho del contenedor del ícono */
+    height: 40px; /* Ajusta la altura del contenedor del ícono */
+}
+
+.icono-salida img {
+    width: 100%; /* Asegura que la imagen del ícono ocupe el 100% del ancho del contenedor */
+    height: 100%; /* Asegura que la imagen del ícono ocupe el 100% de la altura del contenedor */
+}
+
+.image-container img {
+    width: 100%; /* Ajusta la imagen al 100% del ancho del contenedor */
+    height: 100%; /* Ajusta la imagen al 100% de la altura del contenedor */
+    object-fit: cover; /* Mantiene la relación de aspecto y llena el espacio */
+}
+
+.form-container {
+    flex: 1; /* Ocupa el 50% del ancho */
+    display: flex;
+    justify-content: center; /* Centra el formulario horizontalmente */
+    align-items: center; /* Centra el formulario verticalmente */
+    background-color: rgba(191, 162, 162, 0.8); /* Fondo blanco semi-transparente */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    height: 100%; /* Altura completa del contenedor */
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Dispone los elementos del formulario en columna */
+    width: 100%; /* Asegura que el formulario use todo el ancho del contenedor */
+}
+
+label {
+    margin-bottom: 5px; /* Espacio debajo de las etiquetas */
+}
+
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+    margin-bottom: 15px; /* Espacio debajo de cada input */
+    padding: 10px; /* Espaciado interno de los inputs */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+input[type="submit"] {
+    background-color: #4CAF50; /* Color verde para el botón */
+    color: white; /* Color del texto del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Color más oscuro al pasar el mouse */
+}

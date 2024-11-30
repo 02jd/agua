@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Factura.css">
+    <title>Detalles de la Factura</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Detalles de la Factura</h2>
+
+        <?php if ($row): ?>
+        <table>
+            <tr>
+                <th>ID Factura</th>
+                <td><?php echo $row['id_factura']; ?></td>
+            </tr>
+            <tr>
+                <th>Número de Factura</th>
+                <td><?php echo $row['numero_factura']; ?></td>
+            </tr>
+            <tr>
+                <th>Cliente</th>
+                <td><?php echo $row['cliente_nombre'] . " " . $row['cliente_apellido']; ?></td>
+            </tr>
+            <tr>
+                <th>Correo Electrónico</th>
+                <td><?php echo $row['correo_electronico']; ?></td>
+            </tr>
+            <tr>
+                <th>Teléfono</th>
+                <td><?php echo $row['Telefono']; ?></td>
+            </tr>
+            <tr>
+                <th>Lectura Anterior</th>
+                <td><?php echo $row['lectura_anterior']; ?></td>
+            </tr>
+            <tr>
+                <th>Lectura Actual</th>
+                <td><?php echo $row['lectura_actual']; ?></td>
+            </tr>
+            <tr>
+                <th>Consumo (m³)</th>
+                <td><?php echo $row['consumo']; ?></td>
+            </tr>
+            <tr>
+                <th>Monto Pendiente</th>
+                <td>$<?php echo $row['monto_pendiente']; ?></td>
+            </tr>
+            <tr>
+                <th>Monto Actual</th>
+                <td>$<?php echo $row['monto_actual']; ?></td>
+            </tr>
+            <tr>
+                <th>Monto Total</th>
+                <td>$<?php echo $row['monto_total']; ?></td>
+            </tr>
+            <tr>
+                <th>Cancelado</th>
+                <td><?php echo $row['cancelado_factura'] == 'n' ? 'No' : 'Sí'; ?></td>
+            </tr>
+            <tr>
+                <th>Anulada</th>
+                <td><?php echo $row['anulada_factura'] == 'n' ? 'No' : 'Sí'; ?></td>
+            </tr>
+            <tr>
+                <th>Tipo de Pago</th>
+                <td><?php echo $row['tipo_pago']; ?></td>
+            </tr>
+        </table>
+        <?php else: ?>
+            <p>No se encontraron facturas para este cliente.</p>
+        <?php endif; ?>
+    </div>
+
+    <!-- Botones Centrados -->
+    <div class="button-container">
+        <a href="MENU1.html" class="btn">Volver al Menú</a>
+        <a href="pago.html" class="btn">Realizar Pago</a>
+    </div>
+</body>
+</html>
