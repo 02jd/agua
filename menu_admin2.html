@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar</title>
+    <link rel="stylesheet" type="text/css" href="insertar_todo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+        };
+    </script>
+
+</head>
+<body>
+    <div class="bubbles"></div> <!-- Contenedor de burbujas -->
+    
+    <div class="container">
+        <div class="botones">
+            <button onclick="mostrarFormulario('formulario-clientes')">Clientes</button>
+            <button onclick="mostrarFormulario('formulario-empleados')">Empleados</button>
+            <button onclick="mostrarFormulario('formulario-servicios')">Servicios</button>
+        </div>
+        
+        <img src="ACOAPEN.jpg" alt="Imagen Superior" class="imagen-superior-derecha">
+
+        <!-- Formulario para Insertar Clientes -->
+        <div class="formulario" id="formulario-clientes">
+            <center><h3>REGISTRAR CLIENTES</h3></center>
+            <form action="insertar_todo.php" method="POST">
+                <div class="field-group">
+                    <label for="numero_cliente">Numero cliente:</label>
+                    <input type="text" id="numero_cliente" name="numero_cliente" pattern="[A-Za-z0-9]{5}" maxlength="5" required>
+                </div>
+                <div class="field-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="field-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+                <div class="field-group">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="field-group">
+                    <label for="dui">DUI:</label>
+                    <input type="text" id="dui" name="dui" pattern="\d{8}-\d{1}" maxlength="10" required>
+                </div>
+                <div class="field-group">
+                    <label for="id_zona">ID Zona:</label>
+                    <input type="text" id="id_zona" name="id_zona" required>
+                </div>
+                <div class="field-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" name="telefono" pattern="\d{4}-\d{4}" maxlength="9" required>
+                </div>
+                <button id="btn-insertar" class="btn-insertar" type="submit">Insertar Cliente</button>
+            </form>
+        </div>
+
+        <!-- Formulario para Insertar Empleados -->
+        <div class="formulario" id="formulario-empleados">
+            <center><h3>REGISTRAR EMPLEADOS</h3></center>
+            <form action="insertar_todo.php" method="POST">
+                <div class="field-group">
+                    <label for="numero_empleado">Numero Empleado:</label>
+                    <input type="text" id="numero_empleado" name="numero_empleado" pattern="[A-Za-z0-9]{5}" maxlength="5" required>
+                </div>
+                <div class="field-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="field-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+                <div class="field-group">
+                    <label for="tipo">Tipo:</label>
+                    <input type="text" id="tipo" name="tipo" required>
+                </div>
+                <button  id="btn-insertar" class="btn-insertar" type="submit">Insertar Empleado</button>
+            </form>
+        </div>
+
+        <!-- Formulario para Insertar Servicios -->
+        <div class="formulario" id="formulario-servicios">
+            <center><h3>REGISTRAR SERVICIOS</h3></center>
+            <form action="insertar_todo.php" method="POST">
+                <div class="field-group">
+                    <label for="codigo">Codigo:</label>
+                    <input type="text" id="codigo" name="codigo" pattern="[A-Za-z0-9]{5}" maxlength="5" required>
+                </div>
+                <div class="field-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="field-group">
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+                </div>
+                <button  id="btn-insertar" class="btn-insertar"  type="submit">Insertar Servicio</button>
+            </form>
+        </div>
+
+        <div class="formulario" id="formulario-usuario">
+            <center><h3>REGISTRAR USUARIO</h3></center>
+            <form action="insert.php" method="POST">
+                <div class="field-group">
+                    <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required autocomplete="off"><br><br>
+
+                </div>
+                <div class="field-group">
+                    
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" required autocomplete="off"><br><br>
+
+                </div>
+                <div class="field-group">
+                    
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required autocomplete="off"><br><br>
+
+                <button  id="btn-insertar" class="btn-insertar" type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+    
+    <a href="menu_admin.html" class="icono-salida">
+        <img src="regresar.png" alt="Salir">
+    </a>
+
+    <script>
+        function mostrarFormulario(formularioId) {
+            var formularios = document.querySelectorAll('.formulario');
+            formularios.forEach(function(formulario) {
+                formulario.style.display = 'none';
+            });
+            document.getElementById(formularioId).style.display = 'block';
+        }
+
+        // Función para crear burbujas
+        function createBubble() {
+            const bubble = document.createElement('div'); // Crear un nuevo elemento div
+            bubble.classList.add('bubble'); // Agregar la clase de burbuja
+
+            // Definir tamaño aleatorio de la burbuja entre 20px y 60px
+            const size = Math.random() * 40 + 20; // Menos tamaño máximo
+            bubble.style.width = `${size}px`; // Asignar ancho
+            bubble.style.height = `${size}px`; // Asignar altura
+
+            // Posición horizontal aleatoria
+            bubble.style.left = `${Math.random() * 100}vw`; // 100% del ancho de la vista
+
+            // Agregar burbuja al contenedor de burbujas
+            document.querySelector('.bubbles').appendChild(bubble);
+
+            // Eliminar burbuja después de que termine la animación
+            bubble.addEventListener('animationend', () => {
+                bubble.remove();
+            });
+        }
+
+        // Generar burbujas cada 4000ms (más despacio)
+        setInterval(createBubble, 4000);
+    </script>
+</body>
+</html>

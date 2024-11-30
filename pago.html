@@ -1,0 +1,27 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pago.css">
+    <title>Login Pago</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Ingrese su cuenta y contraseña</h2>
+        <form action="pago.php" method="POST">
+            <div class="input-group">
+                <label for="Numero_cuenta">Número de cuenta:</label>
+                <input type="text" id="Numero_cuenta" name="Numero_cuenta" required>
+            </div>
+            <div class="input-group">
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" id="contraseña" name="contraseña" required>
+            </div>
+            <input type="submit" value="Verificar Pago" class="submit-btn">
+        </form>
+    </div>
+</body>
+</html>
+

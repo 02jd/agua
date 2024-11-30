@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .messagebox {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .messagebox button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registro de Nuevo Usuario</h1>
+    <form id="registroForm" autocomplete="off">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required autocomplete="off"><br><br>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" required autocomplete="off"><br><br>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required autocomplete="off"><br><br>
+
+        <input type="submit" value="Registrar">
+    </form>
+
+    <div id="messagebox" class="messagebox">
+        <p id="message"></p>
+        <button onclick="continueRegister()">Continuar</button>
+        <button onclick="goToLogin()">Login</button>
+    </div>
+
+    <script>
+        function showMessageBox(message) {
+            document.getElementById('message').textContent = message;
+            document.getElementById('messagebox').style.display = 'block';
+        }
+
+        function continueRegister() {
+            location.reload(); // Recarga la página
+        }
+
+        function goToLogin() {
+            window.location.href = 'login.html'; // url de la pagina
+        }
+
+        $(document).ready(function() {
+            $('#registroForm').on('submit', function(event) {
+                event.preventDefault();
+
+                $.ajax({
+                    url: 'insert.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.exito) {
+                            showMessageBox(response.mensaje);
+                        } else {
+                            alert(response.mensaje);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error al enviar el formulario: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

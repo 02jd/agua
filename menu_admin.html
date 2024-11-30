@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Administrador</title>
+    <style>
+        body {
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            height: 82vh; 
+            background: radial-gradient(circle, #a8d1fd, #ddddde); /* Fondo con gradiente radial */
+            overflow: hidden;
+        }
+        h1 {
+            h1 {
+                margin: 20px 0; 
+                font-size: 36px; /* Aumenta el tamaño de la fuente */
+                font-weight: bold; /* Hace el texto en negrita */
+                text-align: center; 
+                color: #2c3e50; /* Color más formal y oscuro */
+                font-family: 'Georgia', serif; /* Fuente formal */
+                text-transform: uppercase; /* Convierte el texto a mayúsculas */
+                letter-spacing: 2px; /* Espaciado entre letras para un estilo más elegante */
+                padding: 10px 0; /* Añadir algo de espacio alrededor del texto */
+                border-bottom: 2px solid #2c3e50; /* Línea decorativa debajo del título */
+            }
+        }
+        .container {
+            display: flex; 
+            justify-content: space-between;
+            width: 100%;
+            gap: 5px; 
+            flex-wrap: wrap;
+        }
+        .icon {
+            position: relative; 
+            width: 220px; 
+            height: 230px; 
+            overflow: hidden; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            transition: transform 0.3s; 
+            flex-direction: column;
+        }
+        .icon img {
+            width: 100%; 
+            height: auto; 
+            object-fit: cover; 
+            border-radius: 10px;
+        }
+        .icon:hover {
+            transform: scale(1.05); 
+        }
+        /* Ícono de salida en la esquina inferior derecha */
+.icono-salida {
+    position: absolute; /* Posiciona la imagen de absoluta */
+    bottom: 35px; /* Se ubica a 10px desde la parte inferior de la página */
+    right: 1265px; /* Se ubica a 10px desde la parte derecha de la página */
+    width: 40px; /* Ajusta el ancho del contenedor del ícono */
+    height: 40px; /* Ajusta la altura del contenedor del ícono */
+}
+
+.icono-salida img {
+    width: 100%; /* Asegura que la imagen del ícono ocupe el 100% del ancho del contenedor */
+    height: 100%; /* Asegura que la imagen del ícono ocupe el 100% de la altura del contenedor */
+}
+        .tooltip {
+            position: absolute; 
+            bottom: 100%; 
+            left: 50%; 
+            transform: translate(-50%, -10px); 
+            background-color: rgba(0, 0, 0, 0.8); 
+            color: #fff; 
+            padding: 15px; 
+            border-radius: 10px; 
+            white-space: nowrap; 
+            visibility: visible; 
+            opacity: 0; 
+            transition: visibility 0s 0.3s, opacity 0.3s ease;
+            z-index: 10;
+        }
+        .icon:hover .tooltip {
+            visibility: visible; 
+            opacity: 1; 
+            transition: visibility 0s, opacity 0.3s ease;
+        }
+        .title {
+            margin-top: 10px; 
+            font-size: 15px; 
+            text-align: center; 
+            background: linear-gradient(45deg, #547fff, #9fa1d4); 
+            color: #fff; 
+            padding: 10px; 
+            border-radius: 5px; 
+            display: inline-block; 
+            transition: background-color 0.3s; 
+            cursor: pointer;
+        }
+        .title:hover { 
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles"></div> <!-- Contenedor de burbujas -->
+    <h1>BIENVENIDO</h1> <!-- Título en la parte superior -->
+
+    <br><br><br><br>
+    <div class="container">
+        <div>
+            <div class="icon">
+                <a href="buscar_todo.html"><img src="buscar.png" alt="Buscar"></a>
+                <div class="tooltip">Buscar</div>
+            </div><br><br>
+            <center><div class="title">BUSCAR</div></center>
+        </div>
+        <div>
+            <div class="icon">
+                <a href="actualizar_todo.html"><img src="actualizar.png" alt="Actualizar"></a>
+                <div class="tooltip">Actualizar</div>
+            </div><br><br>
+            <center><div class="title">ACTUALIZAR</div></center>
+        </div>
+        <div>
+            <div class="icon">
+                <a href="eliminar_todo.html"><img src="eliminar.png" alt="Eliminar"></a>
+                <div class="tooltip">Eliminar</div>
+            </div><br><br>
+            <center><div class="title">ELIMINAR</div></center>
+        </div>
+        <div>
+            <div class="icon">
+                <a href="insertar_todo.html"><img src="insertar.png" alt="Insertar"></a>
+                <div class="tooltip">Insertar</div>
+            </div><br><br>
+            <center><div class="title">REGISTRAR</div></center>
+        </div>
+        <div>
+            <div class="icon">
+                <a href="Reportes.html"><img src="reporte.jpg" alt="Reportes"></a>
+                <div class="tooltip">Reportes</div>
+            </div><br><br>
+            <center><div class="title">REPORTES</div></center>
+        </div>
+    </div>
+
+    <!-- Script para evitar que el usuario retroceda -->
+    <script>
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = function () {
+            window.history.pushState(null, null, window.location.href);
+            alert('La función de retroceso está deshabilitada.');
+        };
+        
+    </script>
+        
+    <a href="Login.html" class="icono-salida">
+        <img src="regresar.png" alt="Salir">
+    </a>
+  
+</body>
+</html>

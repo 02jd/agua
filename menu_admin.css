@@ -1,0 +1,35 @@
+
+.icon img {
+    width: 50px; /* Ancho fijo para la imagen */
+    height: 50px; /* Altura fija para la imagen */
+    object-fit: cover; /* Cubre todo el contenedor, recortando las partes que sobran */
+}
+
+.icon {
+    width: 50px; /* Ancho fijo para el contenedor del icono */
+    height: 50px; /* Altura fija para el contenedor del icono */
+    overflow: hidden; /* Oculta el contenido que sobresale del contenedor */
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    justify-content: center; /* Centra la imagen horizontalmente dentro del contenedor */
+    align-items: center; /* Centra la imagen verticalmente dentro del contenedor */
+}
+
+.icon img {
+    width: 100%; /* Asegura que la imagen llene el contenedor horizontalmente */
+    height: auto; /* Mantiene la relación de aspecto de la imagen (ajusta la altura automáticamente) */
+    object-fit: cover; /* Cubre el contenedor, puede recortar partes de la imagen que excedan el tamaño */
+}
+
+.icon img {
+    width: 50px; /* Ancho fijo para la imagen */
+    height: 50px; /* Altura fija para la imagen */
+    object-fit: fill; /* Distorsiona la imagen para llenar completamente el contenedor, puede alterar la relación de aspecto */
+}
+
+.icon {
+    width: 50px; /* Ancho del contenedor del icono */
+    height: 50px; /* Altura del contenedor del icono */
+    background-image: url('buscar.png'); /* Establece una imagen de fondo en el contenedor (cambia según sea necesario) */
+    background-size: cover; /* Cubre todo el contenedor con la imagen de fondo */
+    background-position: center; /* Centra la imagen de fondo en el contenedor */
+}

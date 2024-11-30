@@ -1,0 +1,100 @@
+/* Estilo global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal */
+.login-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Centrado y estilo del título */
+.login-container h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px; /* Separa el título de los campos */
+    text-align: center; /* Centra el título */
+}
+
+/* Estilo de los grupos de input */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Estilo de las etiquetas */
+.input-group label {
+    font-size: 14px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Estilo de los inputs */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Estilo del input cuando se está enfocando */
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Estilo del botón de envío */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para dispositivos pequeños */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+        width: 90%;
+    }
+    
+    .login-container h2 {
+        font-size: 20px;
+    }
+    
+    .input-group input, .submit-btn {
+        padding: 10px;
+    }
+}

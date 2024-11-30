@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REPORTES</title>
+    <link rel="stylesheet" type="text/css" href="buscar_todo.css">
+    <script src="script.js" defer></script>
+    <!-- Incluir jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Incluir SheetJS para Excel, si es necesario -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <h2></h2>
+
+    <div class="bubbles"></div> <!-- Contenedor de burbujas -->
+    
+    <div class="container">
+        <div class="botones">
+            <button onclick="mostrarFormulario('formulario-clientes')">Clientes</button>
+            <button onclick="mostrarFormulario('formulario-empleados')">Empleados</button>
+            <button onclick="mostrarFormulario('formulario-servicios')">Servicios</button>
+            <button onclick="mostrarFormulario('formulario-nueva')">Tablas</button>
+        </div>
+        <br>
+        <img src="ACOAPEN.jpg" alt="Logo" class="imagen-superior-derecha"> 
+     
+        
+        <div class="formulario" id="formulario-clientes" style="display: none;">
+            <center><h3>CLIENTES</h3></center><br>
+            <form id="form-clientes" action="pdf_clientes.php" method="post">
+                <div class="field-group">
+                    <label for="numero_cliente">Número Cliente:</label>
+                    <input type="text" id="numero_cliente" name="numero_cliente" required>
+                </div><br>
+                <center><input id="btn-buscar" class="btn-buscar" type="submit" value="PDF"></center>
+            </form>
+        </div>
+
+       
+        <div class="formulario" id="formulario-empleados" style="display: none;">
+            <center><h3>EMPLEADOS</h3></center><br>
+            <form id="form-empleados" action="pdf_empleados.php" method="post">
+                <div class="field-group">
+                    <label for="numero_empleado">Número Empleado:</label>
+                    <input type="text" id="numero_empleado" name="numero_empleado" required>
+                </div><br>
+                <center><input id="btn-buscar" class="btn-buscar" type="submit" value="PDF"></center>
+            </form>
+        </div>
+
+
+        <div class="formulario" id="formulario-servicios" style="display: none;">
+            <center><h3>SERVICIOS</h3></center><br>
+            <form id="form-servicios" action="pdf_servicios.php" method="post">
+                <div class="field-group">
+                    <label for="codigo">Código Servicio:</label>
+                    <input type="text" id="codigo_servicio" name="codigo_servicio" required>
+                </div><br>
+                <center><input id="btn-buscar" class="btn-buscar" type="submit" value="PDF"></center>
+            </form>
+        </div>
+
+      
+        <div class="formulario" id="formulario-nueva" style="display: none;">
+            <center><h3>REPORTES</h3></center><br>
+            <form id="form-nueva" action="pdf_nueva.php" method="post">
+                <div class="field-group">
+                    <label for="tipo">Selecciona la tabla</label>
+                    <select id="tipo_reporte" name="tipo_reporte" required>
+                        <option value="clientes">Clientes</option>
+                        <option value="empleados">Empleados</option>
+                        <option value="facturas">Facturas</option>
+                        <option value="servicios">Servicios</option>
+                    
+                    </select>
+                </div><br>
+                <center><input id="btn-buscar" class="btn-buscar" type="submit" value="Generar PDF"></center>
+            </form>
+        </div>
+
+    </div>
+
+    <a href="menu_admin.html" class="icono-salida">
+        <img src="regresar.png" alt="Salir" width="50" height="50"> <!-- Icono de salida -->
+    </a>
+
+    <script>
+        function mostrarFormulario(formularioId) {
+            // Ocultar todos los formularios
+            var formularios = document.querySelectorAll('.formulario');
+            formularios.forEach(function(formulario) {
+                formulario.style.display = 'none';
+            });
+            // Mostrar el formulario seleccionado
+            document.getElementById(formularioId).style.display = 'block';
+        }
+
+        // Función para generar el PDF (exportar a PDF)
+        function exportarPDF(tipo) {
+            let id;
+            let url;
+            
+            if (tipo === 'clientes') {
+                id = document.getElementById('numero_cliente').value;
+                url = `obtener_cliente.php?id_cliente=${id}`;
+            } else if (tipo === 'empleados') {
+                id = document.getElementById('numero_empleado').value;
+                url = `obtener_empleado.php?id_empleado=${id}`;
+            } else if (tipo === 'servicios') {
+                id = document.getElementById('codigo_servicio').value;
+                url = `obtener_servicio.php?codigo_servicio=${id}`;
+            }
+
+            // Hacer la solicitud AJAX para obtener los datos
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.length > 0) {
+                        const { jsPDF } = window.jspdf;
+                        const doc = new jsPDF();
+                        let table = [];
+                        let headers = [];
+
+                        // Preparar los datos para el PDF
+                        if (tipo === 'clientes') {
+                            headers = ['ID Cliente', 'Nombre', 'Correo', 'Teléfono']; // Ejemplo de encabezados
+                            data.forEach(item => {
+                                table.push([item.id_cliente, item.nombre_cliente, item.correo_cliente, item.telefono_cliente]);
+                            });
+                        } else if (tipo === 'empleados') {
+                            headers = ['ID Empleado', 'Nombre', 'Departamento']; // Ejemplo de encabezados
+                            data.forEach(item => {
+                                table.push([item.id_empleado, item.nombre_empleado, item.departamento_empleado]);
+                            });
+                        } else if (tipo === 'servicios') {
+                            headers = ['Código', 'Descripción', 'Precio']; // Ejemplo de encabezados
+                            data.forEach(item => {
+                                table.push([item.codigo_servicio, item.descripcion_servicio, item.precio_servicio]);
+                            });
+                        }
+
+                        // Agregar los datos al PDF
+                        doc.autoTable({
+                            head: [headers],
+                            body: table,
+                        });
+
+                        // Generar el archivo PDF
+                        doc.save(`${tipo}_report.pdf`);
+                    } else {
+                        alert("No se encontraron datos.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al obtener los datos:", error);
+                    alert("Ocurrió un error.");
+                });
+        }
+    </script>
+
+</body>
+</html>

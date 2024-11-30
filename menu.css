@@ -1,0 +1,131 @@
+/* Reseteo de estilos y configuración básica */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo del cuerpo del documento */
+body {
+    background-color: #052d41; /* Fondo oscuro */
+}
+
+/* Estilo del menú de navegación */
+nav {
+    background-color: #0a0a0a; /* Fondo oscuro para la barra de navegación */
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: #e6e4e4;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+nav ul li ul.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    border-radius: 10px;
+    left: 0;
+    background-color: #111111;
+    padding: 10px 0;
+    list-style: none;
+}
+
+nav ul li:hover ul.dropdown {
+    display: block;
+}
+
+.login-icon a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.login-icon i {
+    margin-right: 8px;
+}
+
+/* Estilo del contenedor principal */
+.container {
+    padding: 20px;
+}
+
+/* Estilos de las secciones */
+section {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 20px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Títulos y párrafos */
+h2 {
+    font-size: 24px;
+    text-align: center;
+    text-align: justify;
+    color: #080808;
+    margin-bottom: 10px;
+}
+
+p {
+
+    font-size: 16px;
+    color: #070707;
+    line-height: 1.6;
+}
+
+/* Estilo para la sección de contacto */
+.contacto-info {
+    display: flex;
+    text-decoration: #0a0a0a;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre íconos */
+}
+
+.contacto-item {
+    display: flex;
+    align-items: center;
+}
+
+.contacto-item i {
+    font-size: 25px; /* Tamaño del icono */
+    margin-right: 10px; /* Espacio entre icono y texto */
+}
+
+/* Estilo para secciones ocultas */
+.hidden {
+    display: none;
+}
+
+/* Medios para dispositivos móviles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    section {
+        width: 100%; /* Secciones ocupan el 100% del contenedor en móviles */
+    }
+}
